@@ -7,6 +7,8 @@ public class PlayerMove : MonoBehaviour {
 	public float turnSpeed;
 	public float jumpHeight;
 	
+//}
+
 	// Update is called once per frame
 	void Update () {
 		var j = Input.GetAxis("Jump")* Time.deltaTime * jumpHeight;
