@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class Flashlight : MonoBehaviour {
 
-    public bool lightOn;
+    public bool lightOn = true;
 
     Light light;
 
@@ -13,6 +13,7 @@ public class Flashlight : MonoBehaviour {
         light = GetComponent<Light> ();
         // Set Light default to ON
         lightOn = true;
+        print("Turn light on when Flashlight is initiated");
         light.enabled = true;
     }
     
@@ -20,14 +21,16 @@ public class Flashlight : MonoBehaviour {
     void Update () {
         // Toggle light on/off when l key is pressed.
         if (Input.GetKeyUp (KeyCode.L) && lightOn) {
-        lightOn = false;
-        light.enabled = false;
+            print("Light off");
+            lightOn = false;
+            light.enabled = false;
         
     }
 
     else if (Input.GetKeyUp (KeyCode.L) && !lightOn){
-        lightOn = true;
-        light.enabled = true;
+            print("Light on");
+            lightOn = true;
+            light.enabled = true;
         }
         
     }
