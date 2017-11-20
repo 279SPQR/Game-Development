@@ -1,12 +1,15 @@
-﻿using UnityEngine;
+﻿// ToggleLight.cs
+// Turns the light component of this object on/off when the user presses and released the 'L' key
+
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Flashlight : MonoBehaviour {
 
     public bool lightOn = true;
 
-    Light light;
+    public Light light;
 
     // Use this for initialization
     void Start () {

@@ -10,7 +10,7 @@ public class GhostStun : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//lightCheck = GetComponent<Flashlight>().lightOn;
-		flash =  gameObject.GetComponentInChildren<light>().GetComponentInChildren<Flashlight>();
+		flash = gameObject.GetComponentInChildren<Light>().GetComponentInChildren<Flashlight>();
 
 		print("Obj:"+flash);
 		flash.setLightOn();
@@ -31,17 +31,20 @@ public class GhostStun : MonoBehaviour {
 
 
 			other.GetComponent<GhostAI>().moveSpeed = 0f;
-			StartCoroutine(Wait(5));
+			StartCoroutine(Wait(5, other));
+			//StartCoroutine(Wait(5));
 
 		}
 
 
 	}
 
-	IEnumerator Wait(float time){
-		yield return new waitForSeconds(time);
-		ghost.GetComponent<GhostAI>().moveSpeed = 5f;
+	IEnumerator Wait(float time, Collider other){
+		yield return new WaitForSeconds(time);
+		other.gameObject.GetComponent<GhostAI>().moveSpeed = 5f;
+		//ghost.GetComponent<GhostAI>().moveSpeed = 5f;
 		print("Ghost is unstunned");
 	}
+	
 
 }
