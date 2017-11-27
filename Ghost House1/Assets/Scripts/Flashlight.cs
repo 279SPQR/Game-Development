@@ -9,10 +9,15 @@ public class Flashlight : MonoBehaviour {
 
     public bool lightOn = true;
 
+    public int maxPower = 4;
+    public int currentPower;
+
     public Light light;
 
     // Use this for initialization
     void Start () {
+        currentPower = maxPower;
+        print("power = " + currentPower);
         light = GetComponent<Light> ();
         // Set Light default to ON
         lightOn = true;
