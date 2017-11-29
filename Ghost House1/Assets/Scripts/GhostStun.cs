@@ -9,12 +9,11 @@ public class GhostStun : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//lightCheck = GetComponent<Flashlight>().lightOn;
 		flash = gameObject.GetComponentInChildren<Light>().GetComponentInChildren<Flashlight>();
 
 		print("Obj:"+flash);
 		flash.setLightOn();
-		print("Start"+flash.isLightOn());
+		print("Start" + flash.isLightOn());
 	}
 	
 	// Update is called once per frame
