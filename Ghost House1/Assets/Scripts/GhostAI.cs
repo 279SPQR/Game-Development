@@ -16,8 +16,8 @@ public class GhostAI : MonoBehaviour {
 			//transform.LookAt(target);
 			// Ghost moves towards player
 			//transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-		}else
-		{
+		}
+		else{
 			print("Ghost is grounded");
 			Wander();
 		}
