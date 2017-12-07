@@ -12,13 +12,9 @@ public class GhostAI : MonoBehaviour {
 		if(other.gameObject.name == "Player")
 		{
 			Follow();
-			// Ghost looks at player
-			//transform.LookAt(target);
-			// Ghost moves towards player
-			//transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
 		}
 		else{
-			print("Ghost is grounded");
+			//print("Ghost is grounded");
 			Wander();
 		}
 	}
@@ -48,13 +44,12 @@ public class GhostAI : MonoBehaviour {
 
 	}
 
-	// Use this for initialization
-	//void Start () {
-	
-	//}
-	
-	// Update is called once per frame
-	//void Update () {
-	
+	//void OnCollisionEnter(Collision other){
+	//	var hit = other.gameObject;
+	//	var health = hit.GetComponent<playerHealth>();
+//
+	//	if(health != null){
+	//		health.TakeDamage(damage);
+	//	}
 	//}
 }

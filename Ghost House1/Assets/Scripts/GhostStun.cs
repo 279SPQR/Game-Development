@@ -31,7 +31,6 @@ public class GhostStun : MonoBehaviour {
 
 			other.GetComponent<GhostAI>().moveSpeed = 0f;
 			StartCoroutine(Wait(5, other));
-			//StartCoroutine(Wait(5));
 
 		}
 

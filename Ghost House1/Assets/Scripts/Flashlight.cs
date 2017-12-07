@@ -8,16 +8,23 @@ using UnityEngine.UI;
 
 public class Flashlight : MonoBehaviour {
 
+    // Flashlight on/off
     public bool lightOn = true;
-
+    // Flashlight power capacity
     public int maxPower = 4;
+    // Useable flashlight power
     public int currentPower;
-
+    // Flashlight drain amount
     public int batDrainAmt;
+    // Flashlight drain delay
     public float batDrainDelay;
-
-    public Light light;
-
+    // Stores light object
+    Light light;
+    // Batery drain on/off
+    bool draining = false;
+    // Count integer
+    long count = 0;
+    // Battery UI text
     public Text batteryText;
 
     // Use this for initialization
@@ -25,7 +32,7 @@ public class Flashlight : MonoBehaviour {
         // Add power to flashlight
         currentPower = maxPower;
         print("power = " + currentPower);
-
+        // Get light
         light = GetComponent<Light> ();
         // Set Light default to ON
         lightOn = true;
@@ -52,28 +59,46 @@ public class Flashlight : MonoBehaviour {
         batteryText.text = currentPower.ToString();
 
         // Drain battery life
-        if(currentPower > 0){
-            StartCoroutine(BatteryDrain(batDrainDelay, batDrainAmt));
+        if(currentPower > 0 && lightOn){
+
+            if(!draining){
+                StartCoroutine(BatteryDrain(batDrainDelay, batDrainAmt));
+            }
+            else if(currentPower <= 0){
+                lightOn = false;
+                light.enabled = false;
+            }
+
         }
         
     }
 
+    // Turns light on when called
     public void setLightOn(){
         lightOn = true;
     }
-
+    // Returns if light is on
     public bool isLightOn(){
         return lightOn;
     }
-
+    // Drain Battery Life
     IEnumerator BatteryDrain(float delay, int amount){
-        yield return new WaitForSeconds(delay);
-        currentPower -= amount;
+
+        if(lightOn){
+            draining = true;
+            yield return new WaitForSeconds(delay);
+            print(currentPower);
+            currentPower -= amount;
+        }
+
         if(currentPower <= 0){
             currentPower = 0;
             print("Battery is dead!");
             light.enabled = false;
         }
+
+        draining = false;
+
     }
 
 }
