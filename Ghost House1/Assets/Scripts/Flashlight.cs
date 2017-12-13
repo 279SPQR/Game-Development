@@ -50,7 +50,7 @@ public class Flashlight : MonoBehaviour {
         
     }
 
-    else if (Input.GetKeyUp (KeyCode.L) && !lightOn){
+    else if (Input.GetKeyUp (KeyCode.L) && !lightOn && currentPower > 0){
             print("Light on");
             lightOn = true;
             light.enabled = true;
